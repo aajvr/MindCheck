@@ -1,5 +1,4 @@
 import React from "react";
-import { Cloud, HelpCircle } from "lucide-react";
 
 interface NavbarProps {
   activeTab: string;
@@ -12,6 +11,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
     { id: "analyze", label: "Analyze" },
     { id: "guide", label: "Guide" },
     { id: "steps", label: "Gentle Steps" },
+    { id: "wall", label: "Reflections" },
     { id: "about", label: "About" },
   ];
 
@@ -21,20 +21,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         {/* Logo and Brand */}
         <div
           onClick={() => setActiveTab("home")}
-          className="flex cursor-pointer items-center space-x-2 transition-opacity hover:opacity-90"
+          className="flex cursor-pointer items-center transition-opacity hover:opacity-90"
           id="nav-logo-btn"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 text-white shadow-md shadow-violet-200">
-            <Cloud className="h-6 w-6" />
-          </div>
-          <div>
-            <h1 className="font-sans text-lg font-bold tracking-tight text-gray-900 leading-none">
-              CloudNine
-            </h1>
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-violet-600">
-              MindCheck
-            </span>
-          </div>
+          <img
+            src="/mindcheck.png"
+            alt="CloudNine MindCheck"
+            style={{ height: "44px", width: "auto", maxWidth: "200px", objectFit: "contain" }}
+          />
         </div>
 
         {/* Desktop Navigation */}

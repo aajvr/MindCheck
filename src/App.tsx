@@ -5,6 +5,7 @@ import { AnalyzeView } from "./components/AnalyzeView";
 import { GuideView } from "./components/GuideView";
 import { ActionsView } from "./components/ActionsView";
 import { AboutView } from "./components/AboutView";
+import { ReflectionsWallView } from "./components/ReflectionsWallView";
 import { Info } from "lucide-react";
 
 export default function App() {
@@ -20,6 +21,8 @@ export default function App() {
         return <GuideView />;
       case "steps":
         return <ActionsView />;
+      case "wall":
+        return <ReflectionsWallView />;
       case "about":
         return <AboutView />;
       default:
@@ -33,29 +36,34 @@ export default function App() {
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Primary Tab Content Area */}
-      <main className="flex-grow">
-        <div className="animate-fade-in mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          {renderActiveView()}
-        </div>
+      <main className="flex-grow flex flex-col">
+        {activeTab === "wall" || activeTab === "about" ? (
+          <div className="animate-fade-in flex-1 flex flex-col">
+            {renderActiveView()}
+          </div>
+        ) : (
+          <div className="animate-fade-in mx-auto max-w-7xl w-full px-4 py-8 sm:px-6 lg:px-8">
+            {renderActiveView()}
+          </div>
+        )}
       </main>
 
-      {/* Footer Banner */}
-      <footer className="border-t border-gray-100 bg-white py-8 text-center" id="applet-footer">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 text-xs text-gray-400 font-sans">
-          
-          <div>
-            <p>&copy; 2026 CloudNine MindCheck Prototype. Designed carefully for research and screening.</p>
+      {/* Footer — hidden on wall tab */}
+      {activeTab !== "wall" && (
+        <footer className="border-t border-gray-100 bg-white py-8 text-center" id="applet-footer">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 text-xs text-gray-400 font-sans">
+            <div>
+              <p>&copy; 2026 CloudNine MindCheck Prototype. Designed carefully for research and screening.</p>
+            </div>
+            <div className="flex items-center space-x-1 hover:text-gray-600 transition-colors">
+              <Info className="h-3.5 w-3.5" />
+              <button onClick={() => setActiveTab("about")} className="underline cursor-pointer">
+                Research Disclaimer
+              </button>
+            </div>
           </div>
-
-          <div className="flex items-center space-x-1 hover:text-gray-600 transition-colors">
-            <Info className="h-3.5 w-3.5" />
-            <button onClick={() => setActiveTab("about")} className="underline cursor-pointer">
-              Research Disclaimer
-            </button>
-          </div>
-
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }

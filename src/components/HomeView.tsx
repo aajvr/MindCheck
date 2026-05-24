@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { ArrowRight, BookOpen, Activity, Footprints, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen, Activity, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { EmotionIcon } from "./EmotionIcon";
 
@@ -96,8 +96,25 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
             <Activity className="w-3.5 h-3.5 animate-pulse text-violet-600" />
             <span>Non-Clinical AI Research Pilot</span>
           </span>
-          <h1 className="mt-3 font-sans text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-500">
-            CloudNine MindCheck
+          <h1
+            className="mt-5 font-sans font-black tracking-tight leading-none select-none"
+            style={{ fontSize: "clamp(4rem, 11vw, 8rem)" }}
+          >
+            <motion.span
+              className="inline-block cursor-default"
+              style={{ color: "#1a0a00" }}
+              whileHover={{ scale: 1.06, y: -8, rotate: -1.5 }}
+              transition={{ type: "spring", stiffness: 380, damping: 14 }}
+            >
+              Mind
+            </motion.span>
+            <motion.span
+              className="inline-block text-violet-600 cursor-default"
+              whileHover={{ scale: 1.06, y: -8, rotate: 1.5 }}
+              transition={{ type: "spring", stiffness: 380, damping: 14 }}
+            >
+              Check
+            </motion.span>
           </h1>
           <p className="mt-2 text-sm text-gray-500 font-medium">
             A modern, offline-first Bento Dashboard to measure emotional expressions in short texts.
@@ -143,7 +160,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
             <span className="text-xs font-bold uppercase tracking-wider text-violet-700">Model Level</span>
             <div className="my-6">
               <h3 className="text-2xl font-black text-violet-950 font-sans tracking-tight">RoBERTa</h3>
-              <p className="text-xs text-violet-700/80 mt-1.5 leading-relaxed font-sans font-medium">
+              <p className="text-sm text-violet-700/80 mt-1.5 leading-relaxed font-sans font-medium">
                 Fine-tuned using GoEmotions to classify depression-related emotions such as sadness, remorse, fear, anger, disgust, and disapproval from text inputs.
               </p>
             </div>
@@ -160,10 +177,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
           <div className="md:col-span-12 bg-white/80 backdrop-blur-sm rounded-[2rem] p-8 border border-gray-100 shadow-sm">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
               <div>
-                <h3 className="font-sans text-lg font-bold text-gray-900">Primary Monitored Distress Signals</h3>
-                <p className="text-xs text-gray-400 mt-0.5">We track self-reflection patterns commonly found in sub-clinical low mood states.</p>
+                <h3 className="font-sans text-2xl font-bold text-gray-900">Primary Monitored Distress Signals</h3>
+                <p className="text-sm text-gray-400 mt-1">We track self-reflection patterns commonly found in sub-clinical low mood states.</p>
               </div>
-              <button onClick={() => setActiveTab("guide")} className="text-xs font-bold text-violet-600 hover:text-violet-800 underline text-left">
+              <button onClick={() => setActiveTab("guide")} className="text-sm font-bold text-violet-600 hover:text-violet-800 underline text-left">
                 Learn about our taxonomy definitions &rarr;
               </button>
             </div>
@@ -186,23 +203,23 @@ export const HomeView: React.FC<HomeViewProps> = ({ setActiveTab }) => {
 
           {/* Box 4: Gentle Steps CTA */}
           <div
-            className="md:col-span-12 bg-gradient-to-r from-violet-50/80 to-indigo-50/80 backdrop-blur-sm rounded-[2rem] p-8 border border-violet-100 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6 cursor-pointer group"
+            className="md:col-span-12 bg-gradient-to-r from-violet-50/80 to-indigo-50/80 backdrop-blur-sm rounded-[2rem] p-10 md:p-12 border border-violet-100 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-8 cursor-pointer group"
             onClick={() => setActiveTab("steps")}
           >
-            <div className="flex items-center gap-5">
-              <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-violet-100">
-                <Footprints className="w-7 h-7 text-violet-500" />
-              </div>
-              <div>
-                <h4 className="font-sans text-base font-bold text-gray-900">Not sure where to start?</h4>
-                <p className="font-sans text-sm text-gray-500 leading-relaxed mt-0.5 max-w-xl">
-                  Follow our <span className="font-semibold text-violet-600">Gentle Steps</span> — a guided walkthrough that helps you ease into emotional self-reflection at your own pace.
-                </p>
-              </div>
+            <div>
+              <p className="text-xs font-black uppercase tracking-widest text-violet-500 mb-3">Guided Support</p>
+              <h4 className="font-sans text-3xl md:text-4xl font-extrabold text-gray-900 leading-snug">
+                Not sure where to start?
+              </h4>
+              <p className="font-sans text-base text-gray-500 leading-relaxed mt-3 max-w-2xl">
+                Follow our{" "}
+                <span className="font-bold text-violet-600">Gentle Steps</span>{" "}
+                — a guided walkthrough that helps you ease into emotional self-reflection at your own pace, without pressure or judgment.
+              </p>
             </div>
-            <button className="shrink-0 flex items-center gap-2 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm px-6 py-3 transition-all group-hover:shadow-lg group-hover:shadow-violet-200">
+            <button className="shrink-0 flex items-center gap-2.5 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-base px-8 py-4 transition-all group-hover:shadow-xl group-hover:shadow-violet-300 group-hover:scale-105">
               View Gentle Steps
-              <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              <ChevronRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
           </div>
 

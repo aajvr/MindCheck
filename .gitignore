@@ -6,3 +6,13 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# ML model weights and inference (large binary files, not needed for deployment)
+model/
+inference/
