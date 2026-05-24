@@ -1,4 +1,8 @@
-# CloudNine MindCheck
+<div align="center">
+  <img src="public/mindcheck.png" alt="MindCheck" width="420" />
+</div>
+
+# MindCheck
 
 A modern, offline-first emotional wellness web application that analyzes short written texts for emotional signals tied to low-mood patterns. Built as a non-clinical AI research prototype using the GoEmotions taxonomy.
 
