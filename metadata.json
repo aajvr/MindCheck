@@ -1,0 +1,6 @@
+{
+  "name": "CloudNine MindCheck",
+  "description": "A text-based depression-related emotion analysis web application that detects emotional signals of distress and low mood patterns from written thoughts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
