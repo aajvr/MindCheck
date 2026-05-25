@@ -32,24 +32,21 @@ function analyzeTextWithCustomModel(text: string) {
   for (const [emotion, words] of Object.entries(lexicons)) {
     for (const word of words) {
       if (normalized.includes(word)) {
-        matches[emotion] += 3;
-        totalMatches += 3;
+        matches[emotion] += 15;
+        totalMatches += 15;
       }
     }
   }
 
-  const wordCount = text.split(/\s+/).filter(Boolean).length;
-  const wordEntropy = wordCount % 7;
-
   const baseWeights: Record<string, number> = {
-    sadness: 10 + (wordEntropy % 3),
-    remorse: 8 + (wordEntropy % 2),
-    disapproval: 9 + (wordEntropy % 4),
-    fear: 7 + (wordEntropy % 2),
-    anger: 6 + (wordEntropy % 3),
-    disgust: 5 + (wordEntropy % 2),
-    joy: 12 + ((wordCount * 3) % 5),
-    surprise: 8 + (wordEntropy % 3)
+    sadness: 4,
+    remorse: 3,
+    disapproval: 3,
+    fear: 3,
+    anger: 3,
+    disgust: 2,
+    joy: 4,
+    surprise: 2
   };
 
   const rawBreakdown: Record<string, number> = {};
